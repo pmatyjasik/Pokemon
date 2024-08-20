@@ -10,7 +10,8 @@ describe("CenteredBox Component", () => {
     const testValue = "Test Content";
 
     it("Matches DOM Snapshot", () => {
-        const { asFragment } = render(<CenteredBox>{testValue}</CenteredBox>);
+        const { asFragment } = renderComponent(<div>{testValue}</div>);
+
         expect(asFragment()).toMatchSnapshot();
     });
 

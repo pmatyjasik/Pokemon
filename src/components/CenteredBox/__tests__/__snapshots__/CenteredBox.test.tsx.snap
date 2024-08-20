@@ -8,7 +8,9 @@ exports[`CenteredBox Component Matches DOM Snapshot 1`] = `
     <div
       class="MuiBox-root css-7ksecd"
     >
-      Test Content
+      <div>
+        Test Content
+      </div>
     </div>
   </div>
 </DocumentFragment>
