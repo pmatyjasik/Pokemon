@@ -6,6 +6,25 @@ import { CssBaseline } from "@mui/material";
 import { theme } from "@/theme";
 import "./globals.css";
 
+const RootLayout = ({
+    children,
+}: Readonly<{
+    children: ReactNode;
+}>) => {
+    return (
+        <html lang='en'>
+            <body>
+                <AppRouterCacheProvider>
+                    <CssBaseline />
+                    <ThemeProvider theme={theme}>
+                        <main>{children}</main>
+                    </ThemeProvider>
+                </AppRouterCacheProvider>
+            </body>
+        </html>
+    );
+};
+
 export const metadata: Metadata = {
     title: "Pokemon",
     description: "Simple app for pokemon's trainer.",
@@ -21,25 +40,6 @@ export const metadata: Metadata = {
         index: false,
         follow: false,
     },
-};
-
-const RootLayout = ({
-    children,
-}: Readonly<{
-    children: ReactNode;
-}>) => {
-    return (
-        <html lang='en'>
-            <body>
-                <AppRouterCacheProvider>
-                    <CssBaseline />
-                      <ThemeProvider theme={theme}>
-                        <main>{children}</main>
-                      </ThemeProvider>
-                </AppRouterCacheProvider>
-            </body>
-        </html>
-    );
 };
 
 export default RootLayout;

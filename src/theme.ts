@@ -1,4 +1,5 @@
 "use client";
+
 import { createTheme, Shadows } from "@mui/material/styles";
 import { ThemeOptions } from "@mui/material/styles";
 import { NextFont } from "next/dist/compiled/@next/font";
@@ -35,12 +36,16 @@ const themeOptions: ThemeOptions = {
             disabled: "rgba(0, 0, 0, 0.2)",
         },
     },
+    spacing: 4,
     typography: {
         fontFamily: IbmVga.style.fontFamily,
         fontWeightMedium: 400,
         fontSize: 16,
         h6: {
             fontSize: "12px",
+        },
+        caption: {
+            fontSize: "10px",
         },
     },
     shape: {

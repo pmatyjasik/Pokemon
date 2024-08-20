@@ -2,13 +2,13 @@ import { render, screen } from "@testing-library/react";
 import { ReactNode } from "react";
 import { CenteredBox } from "@/components/CenteredBox/CenteredBox";
 
+const renderComponent = (children: ReactNode) => {
+    return render(<CenteredBox>{children}</CenteredBox>);
+};
+
+const testValue = "Test Content";
+
 describe("CenteredBox Component", () => {
-    const renderComponent = (children: ReactNode) => {
-        return render(<CenteredBox>{children}</CenteredBox>);
-    };
-
-    const testValue = "Test Content";
-
     it("Matches DOM Snapshot", () => {
         const { asFragment } = renderComponent(<div>{testValue}</div>);
 
@@ -25,8 +25,7 @@ describe("CenteredBox Component", () => {
     it("centers the content vertically and horizontally", () => {
         renderComponent(<div>{testValue}</div>);
 
-        const outerBox =
-            screen.getByText(testValue).parentElement?.parentElement;
+        const outerBox = screen.getByText(testValue).parentElement?.parentElement;
 
         expect(outerBox).toHaveStyle("display: flex");
         expect(outerBox).toHaveStyle("justify-content: center");

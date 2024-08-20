@@ -1,7 +1,12 @@
-import { Typography } from "@mui/material";
+import { CenteredBox } from "@/components/CenteredBox/CenteredBox";
+import { TrainerForm } from "@/components/TrainerForm/TrainerForm";
 
 const Home = () => {
-    return <Typography>Hello world from typography component</Typography>;
+    return (
+        <CenteredBox>
+            <TrainerForm />
+        </CenteredBox>
+    );
 };
 
 export default Home;

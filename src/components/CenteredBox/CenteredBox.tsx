@@ -11,20 +11,15 @@ export const CenteredBox = ({ children }: CenteredBoxProps) => {
     const { palette, shape, spacing } = useTheme();
 
     return (
-        <Box
-            display='flex'
-            justifyContent='center'
-            alignItems='center'
-            minHeight='100vh'
-        >
+        <Box display='flex' justifyContent='center' alignItems='center' minHeight='100vh'>
             <Box
                 component='div'
                 border={1}
                 borderColor={palette.grey[300]}
                 borderRadius={shape.borderRadius}
-                maxWidth={spacing(68)}
-                width={spacing(68)}
-                padding={spacing(4)}
+                maxWidth={544}
+                width={544}
+                padding={spacing(8)}
             >
                 {children}
             </Box>
