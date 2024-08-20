@@ -12,7 +12,8 @@ describe("Date Component", () => {
     const testValue = "2024-08-20";
 
     it("Matches DOM Snapshot", () => {
-        const { asFragment } = render(<DateTypography date={testValue} />);
+        const { asFragment } = renderComponent({ date: testValue });
+
         expect(asFragment()).toMatchSnapshot();
     });
 
