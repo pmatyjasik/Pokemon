@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorHint component Matches DOM Snapshot 1`] = `
+<DocumentFragment>
+  <span
+    class="MuiTypography-root MuiTypography-caption MuiTypography-alignLeft css-13dzput-MuiTypography-root"
+  >
+    Error message
+  </span>
+</DocumentFragment>
+`;

@@ -1,16 +1,13 @@
 import { render, screen } from "@testing-library/react";
-import {
-    DateTypography,
-    DateTypographyProps,
-} from "@/components/DateTypography/DateTypography";
+import { DateTypography, DateTypographyProps } from "@/components/DateTypography/DateTypography";
+
+const renderComponent = (props: DateTypographyProps) => {
+    return render(<DateTypography {...props} />);
+};
+
+const testValue = "2024-08-20";
 
 describe("Date Component", () => {
-    const renderComponent = (props: DateTypographyProps) => {
-        return render(<DateTypography {...props} />);
-    };
-
-    const testValue = "2024-08-20";
-
     it("Matches DOM Snapshot", () => {
         const { asFragment } = renderComponent({ date: testValue });
 
