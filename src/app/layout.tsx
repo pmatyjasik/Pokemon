@@ -33,9 +33,9 @@ const RootLayout = ({
             <body>
                 <AppRouterCacheProvider>
                     <CssBaseline />
-                    <ThemeProvider theme={theme}>
+                      <ThemeProvider theme={theme}>
                         <main>{children}</main>
-                    </ThemeProvider>
+                      </ThemeProvider>
                 </AppRouterCacheProvider>
             </body>
         </html>

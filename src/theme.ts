@@ -52,6 +52,7 @@ const themeOptions: ThemeOptions = {
         "0px 4px 10px 2px rgba(0, 0, 0, 0.1)",
         ...Array(20).fill("none"),
     ] as Shadows,
+    },
 };
 
 export const theme = createTheme(themeOptions);
