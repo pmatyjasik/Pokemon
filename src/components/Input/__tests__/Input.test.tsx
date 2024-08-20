@@ -11,19 +11,23 @@ const renderComponent = (props: InputProps) => {
     );
 };
 
-const testValue = "Test Input";
+const placeholder = "Test Input";
+
+const defaultProps = {
+    placeholder,
+} satisfies InputProps;
 
 describe("Input Component", () => {
     it("Matches DOM Snapshot", () => {
-        const { asFragment } = renderComponent({ placeholder: testValue });
+        const { asFragment } = renderComponent(defaultProps);
 
         expect(asFragment()).toMatchSnapshot();
     });
 
     test("renders the Input component", () => {
-        renderComponent({ placeholder: testValue });
+        renderComponent(defaultProps);
 
-        const inputElement = screen.getByPlaceholderText(testValue);
+        const inputElement = screen.getByPlaceholderText(placeholder);
 
         expect(inputElement).toBeInTheDocument();
     });

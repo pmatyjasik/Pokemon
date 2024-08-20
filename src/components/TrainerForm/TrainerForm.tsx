@@ -1,25 +1,30 @@
 "use client";
 
-import { Box, Button, Select, MenuItem } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { DateTypography } from "@/components/DateTypography/DateTypography";
 import { InputController } from "@/components/TrainerForm/InputController/InputController";
+import { ComboBoxController } from "@/components/TrainerForm/ComboBoxController/ComboBoxController";
+import { useState } from "react";
 
 export const TrainerForm = () => {
+    const [value, setValue] = useState("");
     return (
-        <Box display='flex' flexDirection='column' gap={6}>
+        <Box display='flex' flexDirection='column' gap={4}>
             <DateTypography date='Wednesday, 06.03.2024' />
             <Box display='grid' gridTemplateColumns='repeat(2, 1fr)' gap={6}>
                 <InputController label="Trainer's name" />
                 <InputController label="Trainer's age" />
             </Box>
-            <Select displayEmpty fullWidth sx={{ mb: 2 }}>
-                <MenuItem value=''>
-                    <em>Choose</em>
-                </MenuItem>
-                <MenuItem value='Pikachu'>Pikachu</MenuItem>
-                <MenuItem value='Charmander'>Charmander</MenuItem>
-                <MenuItem value='Bulbasaur'>Bulbasaur</MenuItem>
-            </Select>
+            <ComboBoxController
+                label='Pokemon name'
+                placeholder='Choose'
+                comboBoxProps={{
+                    options: ["a", "b", "c", "d", "e"],
+                    value,
+                    onChange: setValue,
+                    loading: false,
+                }}
+            />
             <Box
                 sx={{
                     mb: 2,

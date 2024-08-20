@@ -3,7 +3,7 @@
 exports[`Input Component Matches DOM Snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiFormControl-root MuiTextField-root css-j4o5bw-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiTextField-root css-e5ab0l-MuiFormControl-root-MuiTextField-root"
   >
     <div
       class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-pk2gai-MuiInputBase-root-MuiOutlinedInput-root"

@@ -11,11 +11,15 @@ const renderComponent = (props: ErrorHintProps) => {
     );
 };
 
-const testValue = "Error message";
+const error = "Error message";
+
+const defaultProps = {
+    error,
+} satisfies ErrorHintProps;
 
 describe("ErrorHint component", () => {
     it("Matches DOM Snapshot", () => {
-        const { asFragment } = renderComponent({ error: testValue });
+        const { asFragment } = renderComponent(defaultProps);
 
         expect(asFragment()).toMatchSnapshot();
     });
@@ -29,18 +33,18 @@ describe("ErrorHint component", () => {
     });
 
     test("renders error text when error is provided", () => {
-        renderComponent({ error: testValue });
+        renderComponent(defaultProps);
 
-        const errorText = screen.getByText(testValue);
+        const errorText = screen.getByText(error);
 
         expect(errorText).toBeInTheDocument();
         expect(errorText).toHaveStyle(`color: ${theme.palette.error.main}`);
     });
 
     test("renders error text with 'caption' typography", () => {
-        renderComponent({ error: testValue });
+        renderComponent(defaultProps);
 
-        const errorText = screen.getByText(testValue);
+        const errorText = screen.getByText(error);
 
         expect(errorText).toBeInTheDocument();
         expect(errorText.tagName.toLowerCase()).toBe("span");

@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`InputForm Matches DOM Snapshot 1`] = `
+exports[`InputForm Component Matches DOM Snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="MuiBox-root css-3a3hw0"
+    class="MuiBox-root css-bc27n2"
   >
     <label
       class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-animated css-8uvcxz-MuiFormLabel-root-MuiInputLabel-root"
@@ -12,7 +12,7 @@ exports[`InputForm Matches DOM Snapshot 1`] = `
       Test label
     </label>
     <div
-      class="MuiFormControl-root MuiTextField-root css-j4o5bw-MuiFormControl-root-MuiTextField-root"
+      class="MuiFormControl-root MuiTextField-root css-e5ab0l-MuiFormControl-root-MuiTextField-root"
     >
       <div
         class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-formControl css-pk2gai-MuiInputBase-root-MuiOutlinedInput-root"

@@ -6,7 +6,7 @@ exports[`Label component Matches DOM Snapshot 1`] = `
     class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-animated css-8uvcxz-MuiFormLabel-root-MuiInputLabel-root"
     data-testid="label"
   >
-    Test label
+    Test Input
   </label>
 </DocumentFragment>
 `;

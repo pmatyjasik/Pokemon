@@ -3,7 +3,7 @@ import { InputLabel } from "@mui/material";
 import styled from "@emotion/styled";
 
 const StylesLabel = styled(InputLabel)(({ theme }) => ({
-    fontSize: "12px",
+    fontSize: 12,
     color: theme.palette.grey[100],
     textAlign: "left",
 }));
