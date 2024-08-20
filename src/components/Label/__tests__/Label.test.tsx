@@ -11,18 +11,22 @@ const renderComponent = (props: LabelProps) => {
     );
 };
 
-const testValue = "Test label";
+const label = "Test Input";
+
+const defaultProps = {
+    label,
+} satisfies LabelProps;
 
 describe("Label component", () => {
     it("Matches DOM Snapshot", () => {
-        const { asFragment } = renderComponent({ label: testValue });
+        const { asFragment } = renderComponent(defaultProps);
 
         expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders the label with correct text", () => {
-        renderComponent({ label: testValue });
+        renderComponent(defaultProps);
 
-        expect(screen.getByText(testValue)).toBeInTheDocument();
+        expect(screen.getByText(label)).toBeInTheDocument();
     });
 });

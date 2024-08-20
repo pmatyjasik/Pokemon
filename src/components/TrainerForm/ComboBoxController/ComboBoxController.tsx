@@ -1,19 +1,19 @@
-import { Input, InputProps } from "@/components/Input/Input";
 import { Label } from "@/components/Label/Label";
 import { ErrorHint } from "@/components/ErrorHint/ErrorHint";
 import { ControllerWrapper } from "@/components/TrainerForm/ControllerWrapper/ControllerWrapper";
+import { ComboBox, ComboBoxProps } from "@/components/ComboBox/ComboBox";
 
-export interface InputControllerProps {
+export interface ComboBoxControllerProps {
     label: string;
     placeholder?: string;
     error?: string;
-    inputProps?: Omit<InputProps, "placeholder" | "type">;
+    comboBoxProps: Omit<ComboBoxProps, "placeholder">;
 }
 
-export const InputController = ({ label, placeholder, error, inputProps }: InputControllerProps) => (
+export const ComboBoxController = ({ label, placeholder, error, comboBoxProps }: ComboBoxControllerProps) => (
     <ControllerWrapper>
         <Label label={label} />
-        <Input placeholder={placeholder || label} type='input' {...inputProps} />
+        <ComboBox placeholder={placeholder || label} {...comboBoxProps} />
         <ErrorHint error={error} />
     </ControllerWrapper>
 );

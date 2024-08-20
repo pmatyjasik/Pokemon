@@ -17,8 +17,8 @@ export const CenteredBox = ({ children }: CenteredBoxProps) => {
                 border={1}
                 borderColor={palette.grey[300]}
                 borderRadius={shape.borderRadius}
-                maxWidth={544}
-                width={544}
+                maxWidth={spacing(136)}
+                width={spacing(135)}
                 padding={spacing(8)}
             >
                 {children}

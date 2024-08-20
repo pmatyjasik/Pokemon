@@ -11,41 +11,41 @@ const renderComponent = (props: InputControllerProps) => {
     );
 };
 
-const labelTest = "Test label";
-const placeholderTest = "Test placeholder";
+const label = "Test label";
+const placeholder = "Test placeholder";
 
 const defaultProps: InputControllerProps = {
-    label: labelTest,
-    placeholder: placeholderTest,
+    label,
+    placeholder,
 };
 
-describe("InputForm", () => {
+describe("InputForm Component", () => {
     it("Matches DOM Snapshot", () => {
-        const { asFragment } = renderComponent({ ...defaultProps });
+        const { asFragment } = renderComponent(defaultProps);
 
         expect(asFragment()).toMatchSnapshot();
     });
 
     it("renders the Label component with the correct label", () => {
-        renderComponent({ ...defaultProps });
+        renderComponent(defaultProps);
 
         const labelElement = screen.getByTestId("label");
 
-        expect(labelElement).toHaveTextContent(labelTest);
+        expect(labelElement).toHaveTextContent(label);
     });
 
     it("renders the Input component with the correct placeholder", () => {
         renderComponent({ ...defaultProps });
 
-        const inputElement = screen.getByPlaceholderText(placeholderTest);
+        const inputElement = screen.getByPlaceholderText(placeholder);
 
         expect(inputElement).toBeInTheDocument();
     });
 
     it("renders the Input component with the label as placeholder when placeholder is not provided", () => {
-        renderComponent({ label: labelTest });
+        renderComponent({ ...defaultProps, placeholder: undefined });
 
-        const inputElement = screen.getByPlaceholderText(labelTest);
+        const inputElement = screen.getByPlaceholderText(label);
 
         expect(inputElement).toBeInTheDocument();
     });
