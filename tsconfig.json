@@ -12,7 +12,7 @@
         "isolatedModules": true,
         "jsx": "preserve",
         "incremental": true,
-        "types": ["node", "babel__core"],
+        "types": ["node", "babel__core", "jest", "@testing-library/jest-dom"],
         "baseUrl": ".",
         "plugins": [
             {
@@ -20,7 +20,8 @@
             }
         ],
         "paths": {
-            "@/*": ["./src/*"]
+            "@/*": ["./src/*"],
+            "@/components/*": ["./src/components/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

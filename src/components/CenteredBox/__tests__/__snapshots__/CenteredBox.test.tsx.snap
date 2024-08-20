@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CenteredBox Component Matches DOM Snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiBox-root css-ue6sde"
+  >
+    <div
+      class="MuiBox-root css-7ksecd"
+    >
+      Test Content
+    </div>
+  </div>
+</DocumentFragment>
+`;
