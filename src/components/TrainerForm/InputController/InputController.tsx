@@ -7,13 +7,13 @@ export interface InputControllerProps {
     label: string;
     placeholder?: string;
     error?: string;
-    inputProps?: Omit<InputProps, "placeholder" | "type">;
+    inputProps?: Omit<InputProps, "placeholder">;
 }
 
 export const InputController = ({ label, placeholder, error, inputProps }: InputControllerProps) => (
     <ControllerWrapper>
         <Label label={label} />
-        <Input placeholder={placeholder || label} type='input' {...inputProps} />
+        <Input placeholder={placeholder || label} {...inputProps} />
         <ErrorHint error={error} />
     </ControllerWrapper>
 );

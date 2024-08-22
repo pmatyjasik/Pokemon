@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import { DateTypography, DateTypographyProps } from "@/components/DateTypography/DateTypography";
 
 const renderComponent = (props: DateTypographyProps) => {
@@ -12,6 +12,10 @@ const defaultProps = {
 } satisfies DateTypographyProps;
 
 describe("Date Component", () => {
+    afterEach(() => {
+        cleanup();
+    });
+
     it("Matches DOM Snapshot", () => {
         const { asFragment } = renderComponent(defaultProps);
 

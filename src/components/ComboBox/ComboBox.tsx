@@ -1,9 +1,9 @@
 "use client";
 
-import { Autocomplete, CircularProgress, Popper, styled, useTheme } from "@mui/material";
+import { Autocomplete, AutocompleteProps, CircularProgress, Popper, styled, useTheme } from "@mui/material";
 import { Input } from "@/components/Input/Input";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { SyntheticEvent, useCallback, useMemo } from "react";
+import { forwardRef, useMemo, Ref } from "react";
 
 const StyledPopper = styled(Popper)(({ theme }) => ({
     "& .MuiAutocomplete-paper": {
@@ -30,45 +30,37 @@ const StyledListbox = styled("ul")(({ theme }) => ({
     },
 }));
 
-export interface ComboBoxProps {
-    options: string[];
-    value: string;
-    onChange: (selected: string) => void;
-    loading: boolean;
+export interface ComboBoxProps<T> extends Omit<AutocompleteProps<T, false, true, false>, "renderInput"> {
     placeholder: string;
 }
 
-export const ComboBox = ({ options, value, onChange, loading, placeholder }: ComboBoxProps) => {
+export const ComboBox = forwardRef(<T,>(props: ComboBoxProps<T>, ref: Ref<HTMLDivElement>) => {
+    const { placeholder, ...autocompleteProps } = props;
     const { palette, spacing } = useTheme();
-
-    const handleChange = useCallback(
-        (_: SyntheticEvent<Element, Event>, newValue: string | null) => {
-            if (newValue !== null) {
-                onChange(newValue);
-            }
-        },
-        [onChange]
-    );
 
     const popupIcon = useMemo(() => {
         const color = { color: palette.grey[100] };
-        return loading ? (
+
+        return props.loading ? (
             <CircularProgress data-testid='loader' size={spacing(4)} sx={color} />
         ) : (
             <ExpandMoreIcon sx={color} />
         );
-    }, [loading, palette.grey, spacing]);
+    }, [props.loading, palette.grey, spacing]);
 
     return (
         <Autocomplete
-            options={options}
+            {...autocompleteProps}
+            ref={ref}
             disableClearable
             PopperComponent={StyledPopper}
             ListboxComponent={StyledListbox}
-            renderInput={(props) => <Input {...props} placeholder={placeholder} />}
             popupIcon={popupIcon}
-            onChange={handleChange}
-            value={value}
+            renderInput={(params) => <Input {...params} placeholder={placeholder} />}
         />
     );
+}) as (<T>(props: ComboBoxProps<T> & { ref?: Ref<HTMLDivElement> }) => JSX.Element) & {
+    displayName?: string;
 };
+
+ComboBox.displayName = "ComboBox";

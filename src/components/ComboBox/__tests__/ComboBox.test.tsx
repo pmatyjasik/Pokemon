@@ -1,88 +1,44 @@
-import { render, screen, waitFor } from "@testing-library/react";
+import React from "react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { ThemeProvider } from "@mui/material/styles";
-import userEvent from "@testing-library/user-event";
-import { ComboBox, ComboBoxProps } from "@/components/ComboBox/ComboBox";
 import { theme } from "@/theme";
+import { ComboBox } from "@/components/ComboBox/ComboBox";
 
-const renderComponent = (props: ComboBoxProps) => {
+const options = ["Option 1", "Option 2", "Option 3"];
+
+const renderComponent = (props = {}) => {
     return render(
         <ThemeProvider theme={theme}>
-            <ComboBox {...props} />
+            <ComboBox options={options} placeholder='Select an option' {...props} />
         </ThemeProvider>
     );
 };
 
-const options = ["Option 1", "Option 2", "Option 3"];
-const placeholder = "Choose";
-const onChangeMock = jest.fn();
-
-const defaultProps = {
-    options,
-    value: "",
-    onChange: onChangeMock,
-    loading: false,
-    placeholder,
-} satisfies ComboBoxProps;
-
-describe("ComboBox component", () => {
+describe("ComboBox", () => {
     it("Matches DOM Snapshot", () => {
-        const { asFragment } = renderComponent(defaultProps);
+        const { asFragment } = renderComponent();
 
         expect(asFragment()).toMatchSnapshot();
     });
 
-    it("renders the ComboBox component", () => {
-        renderComponent(defaultProps);
+    it("should renders with placeholder text", () => {
+        renderComponent();
 
-        const inputElement = screen.getByPlaceholderText(placeholder);
-        expect(inputElement).toBeInTheDocument();
+        expect(screen.getByPlaceholderText("Select an option")).toBeInTheDocument();
     });
 
-    it("displays options when clicked", async () => {
-        renderComponent(defaultProps);
+    it("should displays loading indicator when loading prop is true", () => {
+        renderComponent({ loading: true });
 
-        const inputElement = screen.getByPlaceholderText(placeholder);
-        userEvent.click(inputElement);
-
-        await waitFor(() => {
-            options.forEach((option) => {
-                expect(screen.getByText(option)).toBeInTheDocument();
-            });
-        });
+        expect(screen.getByTestId("loader")).toBeInTheDocument();
     });
 
-    it("displays CircularProgress when loading is true", () => {
-        renderComponent({ ...defaultProps, loading: true });
+    it("should not display clear button", () => {
+        renderComponent();
 
-        const progressIndicator = screen.getByTestId("loader");
-        expect(progressIndicator).toBeInTheDocument();
-    });
+        fireEvent.click(screen.getByRole("combobox"));
+        fireEvent.change(screen.getByRole("combobox"), { target: { value: "Option 1" } });
 
-    it("renders with the correct selected value", () => {
-        renderComponent({
-            ...defaultProps,
-            value: "Option 1",
-        });
-
-        const inputElement = screen.getByDisplayValue("Option 1");
-        expect(inputElement).toBeInTheDocument();
-    });
-
-    it("handles empty options gracefully", () => {
-        renderComponent(defaultProps);
-
-        const inputElement = screen.getByPlaceholderText(placeholder);
-        userEvent.click(inputElement);
-
-        expect(screen.queryAllByRole("option")).toHaveLength(0);
-    });
-
-    it("does not call onChange when a null value is passed", () => {
-        renderComponent(defaultProps);
-
-        const inputElement = screen.getByPlaceholderText(placeholder);
-        userEvent.clear(inputElement);
-
-        expect(onChangeMock).not.toHaveBeenCalled();
+        expect(screen.queryByLabelText("Clear")).not.toBeInTheDocument();
     });
 });

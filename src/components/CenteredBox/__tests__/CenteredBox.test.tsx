@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import { ReactNode } from "react";
 import { CenteredBox } from "@/components/CenteredBox/CenteredBox";
 
@@ -9,6 +9,10 @@ const renderComponent = (children: ReactNode) => {
 const testValue = "Test Content";
 
 describe("CenteredBox Component", () => {
+    afterEach(() => {
+        cleanup();
+    });
+
     it("Matches DOM Snapshot", () => {
         const { asFragment } = renderComponent(<div>{testValue}</div>);
 

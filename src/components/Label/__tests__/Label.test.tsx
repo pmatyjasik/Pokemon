@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import { Label, LabelProps } from "@/components/Label/Label";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "@/theme";
@@ -18,6 +18,10 @@ const defaultProps = {
 } satisfies LabelProps;
 
 describe("Label component", () => {
+    afterEach(() => {
+        cleanup();
+    });
+
     it("Matches DOM Snapshot", () => {
         const { asFragment } = renderComponent(defaultProps);
 

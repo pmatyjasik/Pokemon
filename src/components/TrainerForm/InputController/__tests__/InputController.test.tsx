@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import { ThemeProvider } from "@mui/material/styles";
 import { theme } from "@/theme";
 import { InputController, InputControllerProps } from "@/components/TrainerForm/InputController/InputController";
@@ -20,6 +20,10 @@ const defaultProps: InputControllerProps = {
 };
 
 describe("InputForm Component", () => {
+    afterEach(() => {
+        cleanup();
+    });
+
     it("Matches DOM Snapshot", () => {
         const { asFragment } = renderComponent(defaultProps);
 

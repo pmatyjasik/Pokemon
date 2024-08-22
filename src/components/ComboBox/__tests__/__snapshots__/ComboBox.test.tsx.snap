@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ComboBox component Matches DOM Snapshot 1`] = `
+exports[`ComboBox Matches DOM Snapshot 1`] = `
 <DocumentFragment>
   <div
     class="MuiAutocomplete-root MuiAutocomplete-hasPopupIcon css-ka7ti6-MuiAutocomplete-root"
@@ -19,7 +19,7 @@ exports[`ComboBox component Matches DOM Snapshot 1`] = `
           autocomplete="off"
           class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd MuiAutocomplete-input MuiAutocomplete-inputFocused css-nxo287-MuiInputBase-input-MuiOutlinedInput-input"
           id=":r0:"
-          placeholder="Choose"
+          placeholder="Select an option"
           role="combobox"
           spellcheck="false"
           type="text"
