@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import { ReactNode } from "react";
 import { ControllerWrapper } from "@/components/TrainerForm/ControllerWrapper/ControllerWrapper";
 
@@ -9,6 +9,10 @@ const renderComponent = (children: ReactNode) => {
 const testValue = "Test Content";
 
 describe("ControllerWrapper Component", () => {
+    afterEach(() => {
+        cleanup();
+    });
+
     it("Matches DOM Snapshot", () => {
         const { asFragment } = renderComponent(<div>{testValue}</div>);
 

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import { ThemeProvider } from "@mui/material";
 import { ErrorHint, ErrorHintProps } from "@/components/ErrorHint/ErrorHint";
 import { theme } from "@/theme";
@@ -18,6 +18,10 @@ const defaultProps = {
 } satisfies ErrorHintProps;
 
 describe("ErrorHint component", () => {
+    afterEach(() => {
+        cleanup();
+    });
+
     it("Matches DOM Snapshot", () => {
         const { asFragment } = renderComponent(defaultProps);
 

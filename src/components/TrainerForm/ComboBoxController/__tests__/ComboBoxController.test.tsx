@@ -6,7 +6,7 @@ import {
     ComboBoxControllerProps,
 } from "@/components/TrainerForm/ComboBoxController/ComboBoxController";
 
-const renderComponent = (props: ComboBoxControllerProps) => {
+const renderComponent = (props: ComboBoxControllerProps<string>) => {
     return render(
         <ThemeProvider theme={theme}>
             <ComboBoxController {...props} />
@@ -18,7 +18,7 @@ const label = "Test label";
 const placeholder = "Test placeholder";
 const error = "Test error";
 
-const defaultProps: ComboBoxControllerProps = {
+const defaultProps: ComboBoxControllerProps<string> = {
     label,
     placeholder,
     comboBoxProps: {

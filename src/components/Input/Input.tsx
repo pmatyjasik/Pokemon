@@ -1,5 +1,6 @@
 "use client";
 
+import { forwardRef } from "react";
 import { TextField, TextFieldProps } from "@mui/material";
 import styled from "@emotion/styled";
 
@@ -33,4 +34,6 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
 
 export type InputProps = TextFieldProps;
 
-export const Input = (props: InputProps) => <StyledTextField {...props} />;
+export const Input = forwardRef<HTMLDivElement, InputProps>((props, ref) => <StyledTextField {...props} ref={ref} />);
+
+Input.displayName = "Input";

@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 import { Input, InputProps } from "@/components/Input/Input";
 import { theme } from "@/theme";
 import { ThemeProvider } from "@mui/material";
@@ -18,6 +18,10 @@ const defaultProps = {
 } satisfies InputProps;
 
 describe("Input Component", () => {
+    afterEach(() => {
+        cleanup();
+    });
+
     it("Matches DOM Snapshot", () => {
         const { asFragment } = renderComponent(defaultProps);
 

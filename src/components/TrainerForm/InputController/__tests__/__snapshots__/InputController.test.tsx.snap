@@ -22,7 +22,7 @@ exports[`InputForm Component Matches DOM Snapshot 1`] = `
           class="MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
           id=":r0:"
           placeholder="Test placeholder"
-          type="input"
+          type="text"
           value=""
         />
         <fieldset
