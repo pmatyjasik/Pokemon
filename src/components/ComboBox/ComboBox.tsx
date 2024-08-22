@@ -17,7 +17,7 @@ const StyledPopper = styled(Popper)(({ theme }) => ({
 
 const StyledListbox = styled("ul")(({ theme }) => ({
     fontSize: 14,
-    height: theme.spacing(50),
+    maxHeight: theme.spacing(50),
     "& .MuiAutocomplete-option": {
         cursor: "pointer",
         "&:hover": {

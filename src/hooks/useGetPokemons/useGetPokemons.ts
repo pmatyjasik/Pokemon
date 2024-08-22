@@ -1,27 +1,23 @@
 import useSWR from "swr";
 import { useDebounce } from "use-debounce";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { fetcher } from "@/utils/utils";
 import { PokemonOption } from "@/models/pokemon";
-
 
 interface UseGetPokemonsReturn {
     pokemonOptions: PokemonOption[] | undefined;
     isLoading: boolean;
     searchTerm: string | null;
-    setSearchTerm: (searchTerm: string | null) => void;
+    setSearchTerm: Dispatch<SetStateAction<string | null>>;
 }
 
-export const useGetPokemons = (debounceTime: number = 1000): UseGetPokemonsReturn => {
+export const useGetPokemons = (): UseGetPokemonsReturn => {
     const [searchTerm, setSearchTerm] = useState<string | null>(null);
-    const [debouncedSearchTerm] = useDebounce(searchTerm, debounceTime);
+    const [debouncedSearchTerm] = useDebounce(searchTerm, 500);
 
     const { data: pokemonOptions, isLoading } = useSWR<PokemonOption[]>(
-        debouncedSearchTerm && debouncedSearchTerm.trim() !== "" ? `/api/pokemon?name=${debouncedSearchTerm}` : null,
-        fetcher,
-        {
-            revalidateOnFocus: false,
-        }
+        `/api/pokemon?name=${debouncedSearchTerm}`,
+        fetcher
     );
 
     return {

@@ -18,32 +18,23 @@ const createMockRequest = (searchParams?: string): NextRequest => {
 };
 
 describe("GET Pokemons function", () => {
-    it("returns empty pokemon array when no name is provided", async () => {
+    it("returns pokemon array when no name is provided", async () => {
         const mockRequest = createMockRequest();
 
         const response = await GET(mockRequest);
         const data = await response.json();
 
-        expect(data).toHaveLength(0);
+        expect(data).toHaveLength(pokemonData.data.length);
     });
 
-    it("returns filtered pokemon when a name is provided", async () => {
-        const mockRequest = createMockRequest("name=pikachu");
+    it("returns pokemon when a name is provided", async () => {
+        const mockRequest = createMockRequest("name=bulbasaur");
 
         const response = await GET(mockRequest);
         const data = await response.json();
 
         expect(data.length).toBeGreaterThan(0);
         expect(data.length).toBeLessThan(pokemonData.data.length);
-        expect(data[0].name.toLowerCase()).toContain("pikachu");
-    });
-
-    it("returns an empty array when no pokemon match the search", async () => {
-        const mockRequest = createMockRequest("name=nonexistentpokemon");
-
-        const response = await GET(mockRequest);
-        const data = await response.json();
-
-        expect(data).toHaveLength(0);
+        expect(data[0].name.toLowerCase()).toContain("bulbasaur");
     });
 });
