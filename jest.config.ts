@@ -11,6 +11,12 @@ const config: Config = {
     clearMocks: true,
     setupFilesAfterEnv: ["@testing-library/jest-dom"],
     moduleNameMapper: {
+        "^@/components/(.*)": "<rootDir>/src/components/$1",
+        "^@/utils/(.*)$": "<rootDir>/src/utils/$1",
+        "^@/api/(.*)$": "<rootDir>/src/app/api/$1",
+        "^@/public/(.*)$": "<rootDir>/public/$1",
+        "^@/models/(.*)$": "<rootDir>/src/models/$1",
+        "^@/hooks/(.*)$": "<rootDir>/src/hooks/$1",
         "^@/(.*)": "<rootDir>/src/$1",
     },
     collectCoverage: true,
