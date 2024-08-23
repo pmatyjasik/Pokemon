@@ -97,7 +97,7 @@ export const TrainerForm = ({ currentDate }: TrainerFormProps) => {
                                 options: pokemonOptions?.map(({ name }) => name) || [],
                                 disablePortal: true,
                                 loading: isLoading,
-                                //@ts-ignore
+                                //@ts-ignore -- TODO: Fix type error
                                 value: field.value || null,
                                 onChange: (_, newValue) => {
                                     field.onChange(newValue ? newValue : null);
