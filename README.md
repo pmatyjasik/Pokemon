@@ -30,6 +30,8 @@ Small project to fetch pokemon data.
 
 To start the development server: `yarn dev`
 
+The production build can be seen at: https://pokemon-pmatyjasiks-projects.vercel.app/
+
 ## Tools and Technologies
 
 -   [Next.js](https://nextjs.org/) - React framework for production
