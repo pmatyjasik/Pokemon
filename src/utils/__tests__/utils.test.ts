@@ -30,7 +30,9 @@ describe("getCurrentDate", () => {
         const result = await getCurrentDate();
 
         expect(result).toBe("Thursday, 22.08.2024");
-        expect(fetch).toHaveBeenCalledWith("https://www.timeapi.io/api/Time/current/zone?timeZone=Europe/Warsaw");
+        expect(fetch).toHaveBeenCalledWith("https://www.timeapi.io/api/Time/current/zone?timeZone=Europe/Warsaw", {
+            next: { revalidate: 60 },
+        });
     });
 
     it("should handle fetch failures gracefully", async () => {
